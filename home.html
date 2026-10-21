@@ -1,455 +1,286 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TalentVora | Home</title>
-<style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #390D1B;
-  color: #FFF8E8;
-}
-header {
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border-bottom: 1px solid #70404D;
-}
-.logo { color: #F3D782; font-size: 23px; font-weight: bold; }
-header a { color: #F3D782; text-decoration: none; }
-main { max-width: 750px; margin: auto; padding: 16px; }
-input {
-  width: 100%;
-  padding: 13px;
-  border: 0;
-  border-radius: 10px;
-  margin: 10px 0;
-  font-size: 15px;
-}
-h2 { color: #F3D782; }
-.categories {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 8px 0;
-}
-.categories button {
-  flex-shrink: 0;
-  border: 1px solid #D4AF37;
-  background: #581C2D;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 25px;
-  cursor: pointer;
-}
-.categories button.active {
-  background: #D4AF37;
-  color: #390D1B;
-}
-.card {
-  background: #581C2D;
-  border: 1px solid #70404D;
-  padding: 16px;
-  border-radius: 14px;
-  margin: 12px 0;
-}
-.card h3 { color: #F3D782; margin-bottom: 6px; }
-.card p { color: #F0DDE2; }
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.actions button, .gold {
-  background: #D4AF37;
-  color: #390D1B;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.shorts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-.short {
-  background: #7A263F;
-  border-radius: 12px;
-  padding: 18px 6px;
-  text-align: center;
-  cursor: pointer;
-}
-nav {
-  display: flex;
-  justify-content: space-around;
-  gap: 8px;
-  flex-wrap: wrap;
-  background: #260814;
-  padding: 15px 6px;
-}
-nav a { color: #F3D782; text-decoration: none; }
-#message { color: #F3D782; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalentVora | Home</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8ed;
+      color: #4b0718;
+    }
+
+    header {
+      background: #4b0718;
+      color: #f2ce62;
+      text-align: center;
+      padding: 22px 12px;
+      border-bottom: 4px solid #d4af37;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin-bottom: 0;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px;
+      background: #650d25;
+    }
+
+    nav a {
+      color: #ffe18a;
+      text-decoration: none;
+      padding: 10px 12px;
+      border: 1px solid #d4af37;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: #d4af37;
+      color: #4b0718;
+    }
+
+    main {
+      max-width: 1000px;
+      width: 100%;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .banner {
+      background: #4b0718;
+      color: #fff;
+      text-align: center;
+      padding: 30px 18px;
+      border: 2px solid #d4af37;
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+
+    .banner h2 {
+      color: #f2ce62;
+      font-size: 27px;
+    }
+
+    .banner button {
+      background: #d4af37;
+      color: #4b0718;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .search {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 20px;
+      border: 1px solid #d4af37;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border: 1px solid #d4af37;
+      border-radius: 14px;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .talent-icon {
+      font-size: 45px;
+    }
+
+    .card h3 {
+      color: #650d25;
+    }
+
+    .card button {
+      background: #650d25;
+      color: #ffe18a;
+      border: none;
+      border-radius: 7px;
+      padding: 10px 15px;
+      cursor: pointer;
+      margin: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #4b0718;
+      color: #f2ce62;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 700px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 450px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      nav a {
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .banner h2 {
+        font-size: 22px;
+      }
+
+      main {
+        padding: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <div class="logo">✦ TalentVora</div>
-  <a href="profile.html">👤 Profile</a>
-</header>
+  <header>
+    <h1>✨ TalentVora</h1>
+    <p>Discover • Create • Shine</p>
+  </header>
 
-<main>
-  <input id="search" type="search"
-    placeholder="🔍 Search talents, videos, creators..."
-    oninput="filterPosts()">
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="upload.html">Upload</a>
+    <a href="saved.html">Saved</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="profile.html">Profile</a>
+    <a href="index.html">Logout</a>
+  </nav>
 
-  <h2>Explore Categories</h2>
-  <div class="categories">
-    <button class="active" onclick="chooseCategory('All',this)">For You</button>
-    <button onclick="chooseCategory('Music',this)">Music</button>
-    <button onclick="chooseCategory('Dance',this)">Dance</button>
-    <button onclick="chooseCategory('Art',this)">Art</button>
-    <button onclick="chooseCategory('Coding',this)">Coding</button>
-    <button onclick="chooseCategory('Sports',this)">Sports</button>
-  </div>
+  <main>
+    <section class="banner">
+      <h2>Your Talent, Your World! 🌍</h2>
+      <p>Share your skills. Inspire people. Show the world what you can do.</p>
+      <button onclick="location.href='showcase.html'">
+        Explore Talents
+      </button>
+    </section>
 
-  <h2>🎬 Talent Shorts</h2>
-  <div class="shorts">
-    <div class="short" onclick="showShort('Music')">🎵<p>Music</p></div>
-    <div class="short" onclick="showShort('Art')">🎨<p>Art</p></div>
-    <div class="short" onclick="showShort('Sports')">🏆<p>Sports</p></div>
-  </div>
+    <h2>Discover Talents ⭐</h2>
 
-  <h2>🌍 Discover Talents</h2>
-  <p id="message" aria-live="polite"></p>
+    <input
+      class="search"
+      id="search"
+      type="search"
+      placeholder="Search talents..."
+      aria-label="Search talents"
+    >
 
-  <div class="card" data-category="Music">
-    <h3>🎤 Amazing Music</h3>
-    <p>Discover singing and musical talent from around the world.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
+    <section class="cards" id="talentCards">
+      <article class="card">
+        <div class="talent-icon">🎤</div>
+        <h3>Music & Singing</h3>
+        <p>Discover amazing voices and musical creativity.</p>
+        <button onclick="likeTalent(this)">♡ Like</button>
+        <button onclick="location.href='showcase.html'">Explore</button>
+      </article>
 
-  <div class="card" data-category="Art">
-    <h3>🎨 Creative Art</h3>
-    <p>Explore drawings, paintings, and creative projects.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
+      <article class="card">
+        <div class="talent-icon">💃</div>
+        <h3>Dance</h3>
+        <p>Celebrate dance, movement, and performance.</p>
+        <button onclick="likeTalent(this)">♡ Like</button>
+        <button onclick="location.href='showcase.html'">Explore</button>
+      </article>
 
-  <div class="card" data-category="Coding">
-    <h3>💻 Coding Projects</h3>
-    <p>Discover websites, apps, and ideas made by creators.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
+      <article class="card">
+        <div class="talent-icon">🎨</div>
+        <h3>Art & Drawing</h3>
+        <p>Explore colorful artwork and creative ideas.</p>
+        <button onclick="likeTalent(this)">♡ Like</button>
+        <button onclick="location.href='showcase.html'">Explore</button>
+      </article>
 
-  <div class="card" data-category="Sports">
-    <h3>🏆 Sports & Skills</h3>
-    <p>Celebrate athletes and people developing new skills.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
-</main>
+      <article class="card">
+        <div class="talent-icon">💻</div>
+        <h3>Technology</h3>
+        <p>Discover coding, inventions, and digital skills.</p>
+        <button onclick="likeTalent(this)">♡ Like</button>
+        <button onclick="location.href='showcase.html'">Explore</button>
+      </article>
 
-<nav>
-  <a href="home.html">🏠 Home</a>
-  <a href="showcase.html">🎬 Showcase</a>
-  <a href="profile.html">👤 Profile</a>
-  <a href="index.html" onclick="logout()">🚪 Logout</a>
-</nav>
+      <article class="card">
+        <div class="talent-icon">📸</div>
+        <h3>Photography</h3>
+        <p>See the world through creative photography.</p>
+        <button onclick="likeTalent(this)">♡ Like</button>
+        <button onclick="location.href='showcase.html'">Explore</button>
+      </article>
 
-<script>
-let category = "All";
+      <article class="card">
+        <div class="talent-icon">✍️</div>
+        <h3>Writing</h3>
+        <p>Discover stories, poems, and new ideas.</p>
+        <button onclick="likeTalent(this)">♡ Like</button>
+        <button onclick="location.href='showcase.html'">Explore</button>
+      </article>
+    </section>
+  </main>
 
-function chooseCategory(value, button) {
-  category = value;
-  document.querySelectorAll(".categories button")
-    .forEach(b => b.classList.remove("active"));
-  button.classList.add("active");
-  filterPosts();
-}
+  <footer>
+    <p>© 2026 TalentVora | Every Talent Matters 💛</p>
+  </footer>
 
-function filterPosts() {
-  const query = document.getElementById("search")
-    .value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card => {
-    const matchesCategory = category === "All" ||
-      card.dataset.category === category;
-    const matchesSearch = card.innerText.toLowerCase()
-      .includes(query);
-    card.style.display =
-      matchesCategory && matchesSearch ? "block" : "none";
-  });
-}
+  <script>
+    function likeTalent(button) {
+      if (button.dataset.liked === "true") {
+        button.dataset.liked = "false";
+        button.textContent = "♡ Like";
+      } else {
+        button.dataset.liked = "true";
+        button.textContent = "♥ Liked";
+      }
+    }
 
-function likePost(button) {
-  const count = button.querySelector("span");
-  const liked = button.dataset.liked === "yes";
-  const next = Number(count.textContent) + (liked ? -1 : 1);
-  count.textContent = next;
-  button.dataset.liked = liked ? "no" : "yes";
-  button.firstChild.textContent = liked ? "♡ Like " : "♥ Liked ";
-}
+    document.getElementById("search").addEventListener("input", function() {
+      const query = this.value.toLowerCase();
 
-function savePost(button) {
-  const saved = button.dataset.saved === "yes";
-  button.dataset.saved = saved ? "no" : "yes";
-  button.textContent = saved ? "🔖 Save" : "✓ Saved";
-}
-
-function showShort(name) {
-  document.getElementById("message").textContent =
-    name + " talents selected! Explore matching posts below.";
-  category = name;
-  filterPosts();
-}
-
-function logout() {
-  alert("Demo logout. Real authentication will be connected later.");
-}
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TalentVora | Home</title>
-<style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #390D1B;
-  color: #FFF8E8;
-}
-header {
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border-bottom: 1px solid #70404D;
-}
-.logo { color: #F3D782; font-size: 23px; font-weight: bold; }
-header a { color: #F3D782; text-decoration: none; }
-main { max-width: 750px; margin: auto; padding: 16px; }
-input {
-  width: 100%;
-  padding: 13px;
-  border: 0;
-  border-radius: 10px;
-  margin: 10px 0;
-  font-size: 15px;
-}
-h2 { color: #F3D782; }
-.categories {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 8px 0;
-}
-.categories button {
-  flex-shrink: 0;
-  border: 1px solid #D4AF37;
-  background: #581C2D;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 25px;
-  cursor: pointer;
-}
-.categories button.active {
-  background: #D4AF37;
-  color: #390D1B;
-}
-.card {
-  background: #581C2D;
-  border: 1px solid #70404D;
-  padding: 16px;
-  border-radius: 14px;
-  margin: 12px 0;
-}
-.card h3 { color: #F3D782; margin-bottom: 6px; }
-.card p { color: #F0DDE2; }
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.actions button, .gold {
-  background: #D4AF37;
-  color: #390D1B;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.shorts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-.short {
-  background: #7A263F;
-  border-radius: 12px;
-  padding: 18px 6px;
-  text-align: center;
-  cursor: pointer;
-}
-nav {
-  display: flex;
-  justify-content: space-around;
-  gap: 8px;
-  flex-wrap: wrap;
-  background: #260814;
-  padding: 15px 6px;
-}
-nav a { color: #F3D782; text-decoration: none; }
-#message { color: #F3D782; }
-</style>
-</head>
-<body>
-<header>
-  <div class="logo">✦ TalentVora</div>
-  <a href="profile.html">👤 Profile</a>
-</header>
-
-<main>
-  <input id="search" type="search"
-    placeholder="🔍 Search talents, videos, creators..."
-    oninput="filterPosts()">
-
-  <h2>Explore Categories</h2>
-  <div class="categories">
-    <button class="active" onclick="chooseCategory('All',this)">For You</button>
-    <button onclick="chooseCategory('Music',this)">Music</button>
-    <button onclick="chooseCategory('Dance',this)">Dance</button>
-    <button onclick="chooseCategory('Art',this)">Art</button>
-    <button onclick="chooseCategory('Coding',this)">Coding</button>
-    <button onclick="chooseCategory('Sports',this)">Sports</button>
-  </div>
-
-  <h2>🎬 Talent Shorts</h2>
-  <div class="shorts">
-    <div class="short" onclick="showShort('Music')">🎵<p>Music</p></div>
-    <div class="short" onclick="showShort('Art')">🎨<p>Art</p></div>
-    <div class="short" onclick="showShort('Sports')">🏆<p>Sports</p></div>
-  </div>
-
-  <h2>🌍 Discover Talents</h2>
-  <p id="message" aria-live="polite"></p>
-
-  <div class="card" data-category="Music">
-    <h3>🎤 Amazing Music</h3>
-    <p>Discover singing and musical talent from around the world.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
-
-  <div class="card" data-category="Art">
-    <h3>🎨 Creative Art</h3>
-    <p>Explore drawings, paintings, and creative projects.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
-
-  <div class="card" data-category="Coding">
-    <h3>💻 Coding Projects</h3>
-    <p>Discover websites, apps, and ideas made by creators.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
-
-  <div class="card" data-category="Sports">
-    <h3>🏆 Sports & Skills</h3>
-    <p>Celebrate athletes and people developing new skills.</p>
-    <div class="actions">
-      <button onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button onclick="savePost(this)">🔖 Save</button>
-    </div>
-  </div>
-</main>
-
-<nav>
-  <a href="home.html">🏠 Home</a>
-  <a href="showcase.html">🎬 Showcase</a>
-  <a href="profile.html">👤 Profile</a>
-  <a href="index.html" onclick="logout()">🚪 Logout</a>
-</nav>
-
-<script>
-let category = "All";
-
-function chooseCategory(value, button) {
-  category = value;
-  document.querySelectorAll(".categories button")
-    .forEach(b => b.classList.remove("active"));
-  button.classList.add("active");
-  filterPosts();
-}
-
-function filterPosts() {
-  const query = document.getElementById("search")
-    .value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card => {
-    const matchesCategory = category === "All" ||
-      card.dataset.category === category;
-    const matchesSearch = card.innerText.toLowerCase()
-      .includes(query);
-    card.style.display =
-      matchesCategory && matchesSearch ? "block" : "none";
-  });
-}
-
-function likePost(button) {
-  const count = button.querySelector("span");
-  const liked = button.dataset.liked === "yes";
-  const next = Number(count.textContent) + (liked ? -1 : 1);
-  count.textContent = next;
-  button.dataset.liked = liked ? "no" : "yes";
-  button.firstChild.textContent = liked ? "♡ Like " : "♥ Liked ";
-}
-
-function savePost(button) {
-  const saved = button.dataset.saved === "yes";
-  button.dataset.saved = saved ? "no" : "yes";
-  button.textContent = saved ? "🔖 Save" : "✓ Saved";
-}
-
-function showShort(name) {
-  document.getElementById("message").textContent =
-    name + " talents selected! Explore matching posts below.";
-  category = name;
-  filterPosts();
-}
-
-function logout() {
-  alert("Demo logout. Real authentication will be connected later.");
-}
-</script>
+      document.querySelectorAll(".card").forEach(function(card) {
+        card.style.display = card.textContent.toLowerCase().includes(query)
+          ? ""
+          : "none";
+      });
+    });
+  </script>
 </body>
 </html>
