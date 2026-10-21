@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Saved Talents</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e8;
+  color: #390d1b;
+}
+
+header {
+  background: #390d1b;
+  color: #f3d782;
+  text-align: center;
+  padding: 22px;
+}
+
+header p {
+  color: white;
+  margin-top: 7px;
+}
+
+nav {
+  background: #581c2d;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #f3d782;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 24px 15px;
+}
+
+.intro {
+  margin-bottom: 22px;
+}
+
+.intro p {
+  margin-top: 8px;
+  color: #79515b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #390d1b15;
+}
+
+.art {
+  height: 155px;
+  background: linear-gradient(135deg, #581c2d, #390d1b);
+  color: #f3d782;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+}
+
+.info {
+  padding: 16px;
+}
+
+.tag {
+  display: inline-block;
+  background: #fff0c2;
+  padding: 5px 9px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.info h3 {
+  margin-bottom: 7px;
+}
+
+.info p {
+  color: #79515b;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+button {
+  background: #390d1b;
+  color: #f3d782;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  width: 100%;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #581c2d;
+}
+
+.empty {
+  display: none;
+  text-align: center;
+  background: white;
+  padding: 35px 15px;
+  border-radius: 14px;
+  line-height: 1.8;
+}
+
+.empty a {
+  color: #581c2d;
+}
+
+footer {
+  margin-top: 30px;
+  background: #390d1b;
+  color: #f3d782;
+  text-align: center;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>✨ TalentVora</h1>
+  <p>Your favorite talents, all in one place</p>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="explore.html">Explore</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="upload.html">Upload</a>
+  <a href="profile.html">Profile</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<main class="container">
+
+  <section class="intro">
+    <h2>⭐ Saved Talents</h2>
+    <p>Keep the creators and performances you love close by.</p>
+  </section>
+
+  <section class="grid" id="savedGrid">
+
+    <article class="card">
+      <div class="art">🎤</div>
+      <div class="info">
+        <span class="tag">Singing</span>
+        <h3>Melody Moments</h3>
+        <p>By Talent Creator</p>
+        <button class="remove">★ Saved · Remove</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art">💃</div>
+      <div class="info">
+        <span class="tag">Dance</span>
+        <h3>Dance Vibes</h3>
+        <p>By Dance Creator</p>
+        <button class="remove">★ Saved · Remove</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art">🎨</div>
+      <div class="info">
+        <span class="tag">Art</span>
+        <h3>Creative World</h3>
+        <p>By Art Creator</p>
+        <button class="remove">★ Saved · Remove</button>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="empty" id="empty">
+    <h3>⭐ No saved talents yet!</h3>
+    <p>Explore creators and save your favorites.</p>
+    <a href="explore.html">Explore Talents</a>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 TalentVora · Discover. Create. Inspire.
+</footer>
+
+<script>
+const grid = document.getElementById("savedGrid");
+const empty = document.getElementById("empty");
+
+function updateEmpty() {
+  const cards = grid.querySelectorAll(".card");
+  empty.style.display = cards.length ? "none" : "block";
+  grid.style.display = cards.length ? "grid" : "none";
+}
+
+document.querySelectorAll(".remove").forEach(button => {
+  button.addEventListener("click", () => {
+    button.closest(".card").remove();
+    updateEmpty();
+  });
+});
+
+updateEmpty();
+</script>
+
+</body>
+</html>
