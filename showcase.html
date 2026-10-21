@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Showcase</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e8;
+  color: #390d1b;
+}
+
+header {
+  background: #390d1b;
+  color: #f3d782;
+  padding: 18px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 28px;
+}
+
+header p {
+  margin-top: 6px;
+  color: #fff8e8;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px;
+  background: #581c2d;
+}
+
+nav a {
+  color: #fff8e8;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+nav a:hover,
+nav a.active {
+  background: #d4af37;
+  color: #390d1b;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 22px 16px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.intro h2 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.intro p {
+  color: #79515b;
+  line-height: 1.5;
+}
+
+.upload-box {
+  background: white;
+  border: 2px dashed #d4af37;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.upload-box h3 {
+  margin-bottom: 8px;
+}
+
+.upload-box p {
+  color: #79515b;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+button,
+.upload-label {
+  background: #390d1b;
+  color: #f3d782;
+  border: none;
+  border-radius: 9px;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-block;
+}
+
+button:hover,
+.upload-label:hover {
+  background: #581c2d;
+}
+
+#videoInput {
+  display: none;
+}
+
+#preview {
+  width: 100%;
+  max-height: 350px;
+  margin-top: 15px;
+  border-radius: 10px;
+  display: none;
+  background: #000;
+}
+
+.filters {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filters button {
+  background: #f3d782;
+  color: #390d1b;
+  border: 1px solid #d4af37;
+}
+
+.filters button.selected {
+  background: #390d1b;
+  color: #f3d782;
+}
+
+.section-title {
+  margin-bottom: 15px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #390d1b15;
+}
+
+.thumbnail {
+  height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  background: linear-gradient(135deg, #581c2d, #390d1b);
+  color: #f3d782;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.tag {
+  display: inline-block;
+  background: #fff0c2;
+  color: #581c2d;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+
+.card h3 {
+  margin-bottom: 7px;
+}
+
+.creator {
+  color: #79515b;
+  font-size: 13px;
+  margin-bottom: 13px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 9px 5px;
+  font-size: 13px;
+}
+
+.actions .save {
+  background: #f3d782;
+  color: #390d1b;
+}
+
+#message {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #581c2d;
+}
+
+footer {
+  text-align: center;
+  padding: 22px;
+  margin-top: 30px;
+  background: #390d1b;
+  color: #f3d782;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  .container {
+    padding: 18px 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>✨ TalentVora</h1>
+  <p>Your talent deserves the world</p>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="profile.html">Profile</a>
+  <a href="showcase.html" class="active">Showcase</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<main class="container">
+
+  <section class="intro">
+    <h2>🌟 Talent Showcase</h2>
+    <p>Discover amazing creators. Share your passion with the world!</p>
+  </section>
+
+  <section class="upload-box">
+    <h3>🎥 Share Your Talent</h3>
+    <p>Select a video from your device to preview it.</p>
+
+    <label class="upload-label" for="videoInput">
+      ＋ Choose Video
+    </label>
+
+    <input
+      type="file"
+      id="videoInput"
+      accept="video/*"
+    >
+
+    <video id="preview" controls></video>
+    <p id="message"></p>
+  </section>
+
+  <section>
+    <h3 class="section-title">Explore Categories</h3>
+
+    <div class="filters">
+      <button class="selected" data-category="All">All</button>
+      <button data-category="Singing">🎤 Singing</button>
+      <button data-category="Dance">💃 Dance</button>
+      <button data-category="Art">🎨 Art</button>
+      <button data-category="Sports">🏏 Sports</button>
+      <button data-category="Other">✨ Other</button>
+    </div>
+  </section>
+
+  <h2 class="section-title">🔥 Featured Talents</h2>
+
+  <section class="video-grid" id="videoGrid">
+
+    <article class="card" data-category="Singing">
+      <div class="thumbnail">🎤</div>
+      <div class="card-content">
+        <span class="tag">Singing</span>
+        <h3>Melody Moments</h3>
+        <p class="creator">By Talent Creator</p>
+        <div class="actions">
+          <button class="like">♡ Like <span>12</span></button>
+          <button class="save">☆ Save</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-category="Dance">
+      <div class="thumbnail">💃</div>
+      <div class="card-content">
+        <span class="tag">Dance</span>
+        <h3>Dance Vibes</h3>
+        <p class="creator">By Dance Creator</p>
+        <div class="actions">
+          <button class="like">♡ Like <span>24</span></button>
+          <button class="save">☆ Save</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-category="Art">
+      <div class="thumbnail">🎨</div>
+      <div class="card-content">
+        <span class="tag">Art</span>
+        <h3>Creative World</h3>
+        <p class="creator">By Art Creator</p>
+        <div class="actions">
+          <button class="like">♡ Like <span>18</span></button>
+          <button class="save">☆ Save</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card" data-category="Sports">
+      <div class="thumbnail">🏏</div>
+      <div class="card-content">
+        <span class="tag">Sports</span>
+        <h3>Sports Stars</h3>
+        <p class="creator">By Sports Creator</p>
+        <div class="actions">
+          <button class="like">♡ Like <span>30</span></button>
+          <button class="save">☆ Save</button>
+        </div>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 TalentVora · Discover. Create. Inspire.</p>
+</footer>
+
+<script>
+const filters = document.querySelectorAll(".filters button");
+const cards = document.querySelectorAll(".card");
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(item => item.classList.remove("selected"));
+    button.classList.add("selected");
+
+    const category = button.dataset.category;
+
+    cards.forEach(card => {
+      card.style.display =
+        category === "All" ||
+        card.dataset.category === category
+          ? ""
+          : "none";
+    });
+  });
+});
+
+document.querySelectorAll(".like").forEach(button => {
+  button.addEventListener("click", () => {
+    const count = button.querySelector("span");
+    const liked = button.dataset.liked === "true";
+
+    count.textContent = Number(count.textContent) + (liked ? -1 : 1);
+    button.dataset.liked = String(!liked);
+    button.firstChild.textContent = liked ? "♡ Like " : "♥ Liked ";
+  });
+});
+
+document.querySelectorAll(".save").forEach(button => {
+  button.addEventListener("click", () => {
+    const saved = button.dataset.saved === "true";
+    button.dataset.saved = String(!saved);
+    button.textContent = saved ? "☆ Save" : "★ Saved";
+  });
+});
+
+const videoInput = document.getElementById("videoInput");
+const preview = document.getElementById("preview");
+const message = document.getElementById("message");
+let currentVideoUrl = null;
+
+videoInput.addEventListener("change", () => {
+  const file = videoInput.files[0];
+
+  if (!file) return;
+
+  if (currentVideoUrl) {
+    URL.revokeObjectURL(currentVideoUrl);
+  }
+
+  currentVideoUrl = URL.createObjectURL(file);
+  preview.src = currentVideoUrl;
+  preview.style.display = "block";
+  message.textContent =
+    "Video selected! This is a local preview, not a published upload.";
+});
+</script>
+
+</body>
+</html>
