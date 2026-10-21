@@ -1,195 +1,187 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TalentVora | Login</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: #390D1B;
-      color: #390D1B;
-      padding: 20px;
-    }
-    .container {
-      width: 100%;
-      max-width: 380px;
-      text-align: center;
-    }
-    .logo {
-      color: #D4AF37;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .tagline {
-      color: #F3D782;
-      margin-bottom: 28px;
-    }
-    .login-box {
-      background: #FFF8E8;
-      padding: 28px;
-      border-radius: 18px;
-      box-shadow: 0 10px 35px #17040b80;
-    }
-    h2 { margin-top: 0; color: #390D1B; }
-    input {
-      width: 100%;
-      padding: 13px;
-      margin: 9px 0;
-      border: 1px solid #D9C8CB;
-      border-radius: 8px;
-      font-size: 15px;
-    }
-    button {
-      width: 100%;
-      padding: 13px;
-      margin-top: 14px;
-      background: #D4AF37;
-      color: #390D1B;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    a { color: #801F40; font-weight: bold; }
-    .signup { margin-top: 20px; font-size: 14px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Login</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e8;
+  color: #390d1b;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-box {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 24px;
+  border-radius: 18px;
+  border: 1px solid #d4af37;
+  box-shadow: 0 8px 25px #390d1b18;
+}
+
+h1 {
+  text-align: center;
+  color: #390d1b;
+  margin-bottom: 8px;
+}
+
+.gold {
+  color: #b18a13;
+}
+
+.subtitle {
+  text-align: center;
+  color: #79515b;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+  margin: 15px 0 7px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.password-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.password-box input {
+  border: none;
+  outline: none;
+}
+
+.eye {
+  padding: 10px;
+  cursor: pointer;
+  background: white;
+  border: none;
+  font-size: 20px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 23px;
+  border: none;
+  border-radius: 9px;
+  background: #390d1b;
+  color: #f3d782;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #581c2d;
+}
+
+.bottom {
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+a {
+  color: #8a6410;
+  font-weight: bold;
+}
+
+#message {
+  margin-top: 12px;
+  color: #a00020;
+  font-size: 14px;
+  text-align: center;
+}
+</style>
 </head>
+
 <body>
-  <main class="container">
-    <div class="logo">✦ TalentVora</div>
-    <p class="tagline">Your Talent. Your Stage. Your World.</p>
 
-    <form class="login-box" onsubmit="login(event)">
-      <h2>Welcome Back!</h2>
-      <p>Discover amazing talents around the world.</p>
+<main class="login-box">
+  <h1>✨ Talent<span class="gold">Vora</span></h1>
+  <p class="subtitle">Your talent deserves the world!</p>
 
-      <input type="email" id="email"
-        placeholder="Email address" required>
+  <form id="loginForm">
+    <label for="email">Email Address</label>
+    <input
+      id="email"
+      type="email"
+      placeholder="Enter your email"
+      autocomplete="email"
+      required
+    >
 
-      <input type="password" id="password"
-        placeholder="Password" required>
+    <label for="password">Password</label>
+    <div class="password-box">
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+        required
+      >
+      <button class="eye" type="button" id="togglePassword"
+        aria-label="Show password">👁️</button>
+    </div>
 
-      <button type="submit">LOGIN</button>
+    <button class="login-btn" type="submit">Login →</button>
+    <p id="message" aria-live="polite"></p>
+  </form>
 
-      <p class="signup">
-        Don't have an account?
-        <a href="signup.html">Sign Up</a>
-      </p>
-    </form>
-  </main>
+  <div class="bottom">
+    Don't have an account?<br>
+    <a href="signup.html">Create an account</a>
+  </div>
+</main>
 
-  <script>
-    function login(event) {
-      event.preventDefault();
-      alert("Login page design is ready! Real authentication will be connected next.");
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TalentVora | Login</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: #390D1B;
-      color: #390D1B;
-      padding: 20px;
-    }
-    .container {
-      width: 100%;
-      max-width: 380px;
-      text-align: center;
-    }
-    .logo {
-      color: #D4AF37;
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .tagline {
-      color: #F3D782;
-      margin-bottom: 28px;
-    }
-    .login-box {
-      background: #FFF8E8;
-      padding: 28px;
-      border-radius: 18px;
-      box-shadow: 0 10px 35px #17040b80;
-    }
-    h2 { margin-top: 0; color: #390D1B; }
-    input {
-      width: 100%;
-      padding: 13px;
-      margin: 9px 0;
-      border: 1px solid #D9C8CB;
-      border-radius: 8px;
-      font-size: 15px;
-    }
-    button {
-      width: 100%;
-      padding: 13px;
-      margin-top: 14px;
-      background: #D4AF37;
-      color: #390D1B;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    a { color: #801F40; font-weight: bold; }
-    .signup { margin-top: 20px; font-size: 14px; }
-  </style>
-</head>
-<body>
-  <main class="container">
-    <div class="logo">✦ TalentVora</div>
-    <p class="tagline">Your Talent. Your Stage. Your World.</p>
+<script>
+const password = document.getElementById("password");
+const toggle = document.getElementById("togglePassword");
 
-    <form class="login-box" onsubmit="login(event)">
-      <h2>Welcome Back!</h2>
-      <p>Discover amazing talents around the world.</p>
+toggle.addEventListener("click", () => {
+  const hidden = password.type === "password";
+  password.type = hidden ? "text" : "password";
+  toggle.textContent = hidden ? "🙈" : "👁️";
+  toggle.setAttribute(
+    "aria-label",
+    hidden ? "Hide password" : "Show password"
+  );
+});
 
-      <input type="email" id="email"
-        placeholder="Email address" required>
+document.getElementById("loginForm").addEventListener("submit", event => {
+  event.preventDefault();
 
-      <input type="password" id="password"
-        placeholder="Password" required>
+  document.getElementById("message").textContent = "";
+  window.location.href = "dashboard.html";
+});
+</script>
 
-      <button type="submit">LOGIN</button>
-
-      <p class="signup">
-        Don't have an account?
-        <a href="signup.html">Sign Up</a>
-      </p>
-    </form>
-  </main>
-
-  <script>
-    function login(event) {
-      event.preventDefault();
-      alert("Login page design is ready! Real authentication will be connected next.");
-    }
-  </script>
 </body>
 </html>
