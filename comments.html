@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Comments</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e8;
+  color: #390d1b;
+}
+
+header {
+  background: #390d1b;
+  color: #f3d782;
+  text-align: center;
+  padding: 22px;
+}
+
+header p {
+  color: white;
+  margin-top: 6px;
+}
+
+nav {
+  background: #581c2d;
+  padding: 13px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #f3d782;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 22px 15px;
+}
+
+.post, .comments-box {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px #390d1b12;
+}
+
+.art {
+  background: linear-gradient(135deg, #581c2d, #390d1b);
+  color: #f3d782;
+  border-radius: 10px;
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  font-size: 55px;
+  margin: 14px 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #390d1b;
+  color: #f3d782;
+  cursor: pointer;
+}
+
+.like-btn {
+  margin-top: 12px;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+input {
+  min-width: 0;
+  flex: 1;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.comment {
+  border-top: 1px solid #f0dfb3;
+  padding: 14px 0;
+}
+
+.comment strong {
+  color: #581c2d;
+}
+
+.comment p {
+  margin: 6px 0;
+  overflow-wrap: anywhere;
+}
+
+.reply {
+  background: #f3d782;
+  color: #390d1b;
+  padding: 6px 10px;
+}
+
+#message {
+  color: #581c2d;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+footer {
+  margin-top: 25px;
+  padding: 20px;
+  text-align: center;
+  background: #390d1b;
+  color: #f3d782;
+}
+
+@media(max-width: 420px) {
+  form {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>✨ TalentVora</h1>
+  <p>Celebrate talent. Share kindness.</p>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="explore.html">Explore</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="profile.html">Profile</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<main class="container">
+
+  <section class="post">
+    <h2>🎨 Talent Post</h2>
+    <div class="art">✨</div>
+    <p><strong>Creative Artist</strong></p>
+    <p>Sharing my latest creation with the TalentVora community!</p>
+    <button class="like-btn" id="likeBtn">♡ Like <span>12</span></button>
+  </section>
+
+  <section class="comments-box">
+    <h2>💬 Comments</h2>
+    <p style="margin-top:6px;color:#79515b">
+      Share a kind and encouraging comment.
+    </p>
+
+    <form id="commentForm">
+      <input
+        id="commentInput"
+        type="text"
+        maxlength="250"
+        placeholder="Write a comment..."
+        aria-label="Write a comment"
+        required
+      >
+      <button type="submit">Post</button>
+    </form>
+
+    <p id="message" aria-live="polite"></p>
+
+    <div id="commentList">
+      <article class="comment">
+        <strong>Ananya</strong>
+        <p>Amazing creativity! ✨</p>
+        <button class="reply">♡ Like</button>
+      </article>
+
+      <article class="comment">
+        <strong>Rahul</strong>
+        <p>Keep sharing your talent! 👏</p>
+        <button class="reply">♡ Like</button>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 TalentVora · Every talent matters.
+</footer>
+
+<script>
+const form = document.getElementById("commentForm");
+const input = document.getElementById("commentInput");
+const list = document.getElementById("commentList");
+const message = document.getElementById("message");
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const text = input.value.trim();
+  if (!text) return;
+
+  const article = document.createElement("article");
+  article.className = "comment";
+
+  const name = document.createElement("strong");
+  name.textContent = "You";
+
+  const content = document.createElement("p");
+  content.textContent = text;
+
+  const button = document.createElement("button");
+  button.className = "reply";
+  button.textContent = "♡ Like";
+  button.addEventListener("click", () => {
+    const liked = button.dataset.liked === "true";
+    button.dataset.liked = String(!liked);
+    button.textContent = liked ? "♡ Like" : "♥ Liked";
+  });
+
+  article.append(name, content, button);
+  list.prepend(article);
+
+  input.value = "";
+  message.textContent = "Comment added on this page!";
+});
+
+document.getElementById("likeBtn").addEventListener("click", function() {
+  const count = this.querySelector("span");
+  const liked = this.dataset.liked === "true";
+
+  count.textContent = Number(count.textContent) + (liked ? -1 : 1);
+  this.dataset.liked = String(!liked);
+  this.firstChild.textContent = liked ? "♡ Like " : "♥ Liked ";
+});
+
+document.querySelectorAll(".reply").forEach(button => {
+  button.addEventListener("click", () => {
+    const liked = button.dataset.liked === "true";
+    button.dataset.liked = String(!liked);
+    button.textContent = liked ? "♡ Like" : "♥ Liked";
+  });
+});
+</script>
+
+</body>
+</html>
