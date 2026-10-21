@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TalentVora Navigation</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8ed;
+      color: #4b0718;
+    }
+
+    header {
+      background: #4b0718;
+      color: #f2ce62;
+      padding: 18px;
+      text-align: center;
+      border-bottom: 3px solid #d4af37;
+    }
+
+    header h1 { margin: 0; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px;
+      background: #650d25;
+    }
+
+    nav a {
+      color: #ffe18a;
+      text-decoration: none;
+      padding: 10px 12px;
+      border: 1px solid #d4af37;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: #d4af37;
+      color: #4b0718;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 35px auto;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .welcome {
+      background: white;
+      border: 1px solid #d4af37;
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    button {
+      background: #d4af37;
+      color: #4b0718;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TalentVora ✨</h1>
+    <p>Discover. Create. Shine.</p>
+  </header>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="explore.html">Explore</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="upload.html">Upload</a>
+    <a href="saved.html">Saved</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="profile.html">Profile</a>
+    <a href="index.html">Logout</a>
+  </nav>
+
+  <main>
+    <section class="welcome">
+      <h2>Welcome to TalentVora!</h2>
+      <p>Your talent deserves to be seen by the world.</p>
+      <p>Share your creativity, discover new skills, and inspire others.</p>
+      <button onclick="location.href='showcase.html'">
+        Explore Talents
+      </button>
+    </section>
+  </main>
+</body>
+</html>
