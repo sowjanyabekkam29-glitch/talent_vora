@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Notifications</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e8;
+  color: #390d1b;
+}
+
+header {
+  background: #390d1b;
+  color: #f3d782;
+  padding: 22px;
+  text-align: center;
+}
+
+header p {
+  color: white;
+  margin-top: 7px;
+}
+
+nav {
+  background: #581c2d;
+  padding: 13px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 7px;
+}
+
+nav a:hover {
+  color: #f3d782;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+  padding: 22px 15px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #390d1b;
+  color: #f3d782;
+  border: none;
+  padding: 10px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: white;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: 1px solid #f0dfb3;
+}
+
+.notification.unread {
+  border-left: 5px solid #d4af37;
+  background: #fffdf5;
+}
+
+.avatar {
+  min-width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #581c2d;
+  color: #f3d782;
+  font-size: 22px;
+}
+
+.details {
+  flex: 1;
+}
+
+.details p {
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.details small {
+  display: block;
+  color: #79515b;
+  margin-top: 5px;
+}
+
+.badge {
+  display: inline-block;
+  background: #f3d782;
+  padding: 3px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.empty {
+  text-align: center;
+  padding: 30px;
+  display: none;
+}
+
+footer {
+  background: #390d1b;
+  color: #f3d782;
+  text-align: center;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+@media (max-width: 420px) {
+  .top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>✨ TalentVora</h1>
+  <p>Stay connected with your talent community</p>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="explore.html">Explore</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="profile.html">Profile</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<main class="container">
+
+  <div class="top">
+    <h2>🔔 Notifications</h2>
+    <button id="readAll">Mark all as read</button>
+  </div>
+
+  <section id="notificationList">
+
+    <article class="notification unread">
+      <div class="avatar">❤️</div>
+      <div class="details">
+        <p><strong>Ananya</strong> liked your talent showcase.</p>
+        <small>Recently</small>
+        <span class="badge">New</span>
+      </div>
+    </article>
+
+    <article class="notification unread">
+      <div class="avatar">👤</div>
+      <div class="details">
+        <p><strong>Rahul</strong> started following you.</p>
+        <small>Recently</small>
+        <span class="badge">New</span>
+      </div>
+    </article>
+
+    <article class="notification unread">
+      <div class="avatar">💬</div>
+      <div class="details">
+        <p><strong>Meera</strong> commented on your artwork.</p>
+        <small>1 hour ago</small>
+        <span class="badge">New</span>
+      </div>
+    </article>
+
+    <article class="notification">
+      <div class="avatar">🏆</div>
+      <div class="details">
+        <p>Your talent profile is ready to shine!</p>
+        <small>Earlier</small>
+      </div>
+    </article>
+
+  </section>
+
+  <p class="empty" id="empty">
+    🎉 You're all caught up!
+  </p>
+
+</main>
+
+<footer>
+  © 2026 TalentVora · Discover. Create. Inspire.
+</footer>
+
+<script>
+const list = document.getElementById("notificationList");
+const readAll = document.getElementById("readAll");
+const empty = document.getElementById("empty");
+
+readAll.addEventListener("click", () => {
+  document.querySelectorAll(".notification.unread")
+    .forEach(item => {
+      item.classList.remove("unread");
+      item.querySelector(".badge")?.remove();
+    });
+
+  empty.style.display = "block";
+  readAll.textContent = "All read ✓";
+  readAll.disabled = true;
+});
+</script>
+
+</body>
+</html>
