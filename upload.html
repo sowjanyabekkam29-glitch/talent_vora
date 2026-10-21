@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Upload Talent</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e8;
+  color: #390d1b;
+}
+
+header {
+  background: #390d1b;
+  color: #f3d782;
+  text-align: center;
+  padding: 22px;
+}
+
+header p {
+  color: white;
+  margin-top: 6px;
+}
+
+nav {
+  background: #581c2d;
+  padding: 13px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #f3d782;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+  padding: 24px 15px;
+}
+
+.upload-card {
+  background: white;
+  border: 1px solid #f0dfb3;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 4px 15px #390d1b12;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.description {
+  color: #79515b;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 16px 0 8px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d4af37;
+  border-radius: 9px;
+  font: inherit;
+  background: #fffdf7;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.file-box {
+  border: 2px dashed #d4af37;
+  padding: 22px 12px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.file-box input {
+  margin-top: 12px;
+  border: none;
+}
+
+#preview {
+  display: none;
+  width: 100%;
+  max-height: 320px;
+  margin-top: 15px;
+  background: black;
+  border-radius: 10px;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #390d1b;
+  color: #f3d782;
+  border: none;
+  border-radius: 9px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #581c2d;
+}
+
+#message {
+  margin-top: 15px;
+  color: #581c2d;
+  line-height: 1.5;
+}
+
+footer {
+  background: #390d1b;
+  color: #f3d782;
+  text-align: center;
+  padding: 20px;
+  margin-top: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>✨ TalentVora</h1>
+  <p>Your talent deserves the world</p>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="explore.html">Explore</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="profile.html">Profile</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<main class="container">
+  <section class="upload-card">
+    <h2>🎬 Upload Your Talent</h2>
+    <p class="description">
+      Share your passion with the TalentVora community.
+      Choose a video and add its details.
+    </p>
+
+    <form id="uploadForm">
+      <label for="title">Talent Title</label>
+      <input id="title" maxlength="80"
+        placeholder="e.g. My Dance Performance" required>
+
+      <label for="category">Talent Category</label>
+      <select id="category" required>
+        <option value="">Choose a category</option>
+        <option>Singing</option>
+        <option>Dance</option>
+        <option>Art</option>
+        <option>Sports</option>
+        <option>Coding</option>
+        <option>Acting</option>
+        <option>Other</option>
+      </select>
+
+      <label for="description">Description</label>
+      <textarea id="description" maxlength="500"
+        placeholder="Tell everyone about your talent..."></textarea>
+
+      <label for="video">Choose Video</label>
+      <div class="file-box">
+        <p>🎥 Select a video from your device</p>
+        <input type="file" id="video" accept="video/*" required>
+        <video id="preview" controls></video>
+        <p id="fileInfo"></p>
+      </div>
+
+      <button type="submit">Preview My Talent</button>
+      <p id="message" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  © 2026 TalentVora · Discover. Create. Inspire.
+</footer>
+
+<script>
+const form = document.getElementById("uploadForm");
+const videoInput = document.getElementById("video");
+const preview = document.getElementById("preview");
+const fileInfo = document.getElementById("fileInfo");
+const message = document.getElementById("message");
+
+let videoURL = null;
+
+videoInput.addEventListener("change", () => {
+  const file = videoInput.files[0];
+
+  message.textContent = "";
+  preview.style.display = "none";
+
+  if (!file) return;
+
+  if (!file.type.startsWith("video/")) {
+    videoInput.value = "";
+    fileInfo.textContent = "Please choose a video file.";
+    return;
+  }
+
+  if (file.size > 50 * 1024 * 1024) {
+    videoInput.value = "";
+    fileInfo.textContent = "Demo limit: choose a video under 50 MB.";
+    return;
+  }
+
+  if (videoURL) URL.revokeObjectURL(videoURL);
+
+  videoURL = URL.createObjectURL(file);
+  preview.src = videoURL;
+  preview.style.display = "block";
+  fileInfo.textContent =
+    file.name + " · " + (file.size / (1024 * 1024)).toFixed(1) + " MB";
+});
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  if (!videoInput.files.length) {
+    message.textContent = "Please choose a video first.";
+    return;
+  }
+
+  const title = document.getElementById("title").value.trim();
+  const category = document.getElementById("category").value;
+
+  message.textContent =
+    "✅ Preview ready: " + title + " (" + category + "). " +
+    "This is a local demo; your video has not been published online.";
+});
+</script>
+
+</body>
+</html>
