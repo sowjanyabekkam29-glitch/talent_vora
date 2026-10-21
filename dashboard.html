@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Dashboard</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e8;
+  color: #390d1b;
+}
+
+header {
+  background: #390d1b;
+  color: #f3d782;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+header p {
+  color: white;
+  margin-top: 8px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 14px;
+  background: #581c2d;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #f3d782;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 24px 15px;
+}
+
+.welcome {
+  background: linear-gradient(135deg, #581c2d, #390d1b);
+  color: #f3d782;
+  padding: 28px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+}
+
+.welcome p {
+  color: white;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.welcome a {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 11px 17px;
+  background: #d4af37;
+  color: #390d1b;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #f0dfb3;
+  border-radius: 13px;
+  padding: 20px;
+  text-align: center;
+}
+
+.card .icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: #79515b;
+  margin: 9px 0 16px;
+  font-size: 14px;
+}
+
+.card a {
+  display: block;
+  background: #390d1b;
+  color: #f3d782;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.card a:hover {
+  background: #581c2d;
+}
+
+footer {
+  background: #390d1b;
+  color: #f3d782;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>✨ TalentVora</h1>
+  <p>Discover. Create. Inspire.</p>
+</header>
+
+<nav>
+  <a href="home.html">Home</a>
+  <a href="explore.html">Explore</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="upload.html">Upload</a>
+  <a href="saved.html">Saved</a>
+  <a href="notifications.html">Notifications</a>
+  <a href="profile.html">Profile</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<main class="container">
+
+  <section class="welcome">
+    <h2>Welcome to TalentVora! 🌟</h2>
+    <p>
+      Every person has a talent. Discover creators,
+      share your skills, and inspire the world.
+    </p>
+    <a href="showcase.html">Explore Talent →</a>
+  </section>
+
+  <h2>Your Talent Hub</h2>
+
+  <section class="grid">
+
+    <article class="card">
+      <div class="icon">🔍</div>
+      <h3>Explore</h3>
+      <p>Discover creators and new skills.</p>
+      <a href="explore.html">Explore Now</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">🎬</div>
+      <h3>Talent Showcase</h3>
+      <p>See inspiring talent performances.</p>
+      <a href="showcase.html">View Showcase</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">📤</div>
+      <h3>Upload Talent</h3>
+      <p>Preview your own talent video.</p>
+      <a href="upload.html">Upload Video</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">⭐</div>
+      <h3>Saved Talents</h3>
+      <p>Visit your favorite talent posts.</p>
+      <a href="saved.html">View Saved</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">🔔</div>
+      <h3>Notifications</h3>
+      <p>Check your community updates.</p>
+      <a href="notifications.html">View Updates</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">👤</div>
+      <h3>My Profile</h3>
+      <p>View and edit your talent profile.</p>
+      <a href="profile.html">Open Profile</a>
+    </article>
+
+    <article class="card">
+      <div class="icon">💬</div>
+      <h3>Comments</h3>
+      <p>Share encouragement and feedback.</p>
+      <a href="comments.html">View Comments</a>
+    </article>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 TalentVora · Every talent matters.
+</footer>
+
+</body>
+</html>
