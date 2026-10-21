@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentVora | Profile</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #390D1B;
+  color: #FFF8E8;
+}
+
+header, nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #260814;
+}
+
+.logo { color: #F3D782; font-size: 22px; font-weight: bold; }
+a { color: #F3D782; text-decoration: none; }
+
+main { max-width: 700px; margin: auto; padding: 18px; }
+
+.profile-card {
+  background: #581C2D;
+  border: 1px solid #70404D;
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #D4AF37;
+  color: #390D1B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h2, h3 { color: #F3D782; }
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 22px 0;
+}
+
+.stats strong {
+  display: block;
+  font-size: 22px;
+  color: #F3D782;
+  margin-bottom: 5px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: bold;
+  background: #D4AF37;
+  color: #390D1B;
+}
+
+.edit-btn { width: 100%; }
+
+.talents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: #390D1B;
+  border: 1px solid #D4AF37;
+  color: #F3D782;
+  border-radius: 20px;
+  padding: 9px 13px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.post {
+  background: #581C2D;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid #70404D;
+}
+
+dialog {
+  width: calc(100% - 32px);
+  max-width: 430px;
+  border: 1px solid #D4AF37;
+  border-radius: 16px;
+  background: #FFF8E8;
+  color: #390D1B;
+  padding: 22px;
+}
+
+dialog::backdrop { background: #0009; }
+
+dialog h2 { color: #390D1B; }
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input, textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 11px;
+  border: 1px solid #D9C8CB;
+  border-radius: 8px;
+  font: inherit;
+}
+
+textarea { resize: vertical; }
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.form-actions button { flex: 1; }
+
+.cancel { background: #E9DDE0; }
+
+#notice { color: #F3D782; }
+
+@media (max-width: 420px) {
+  .posts { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">✦ TalentVora</div>
+  <a href="home.html">🏠 Home</a>
+</header>
+
+<main>
+  <section class="profile-card">
+    <div class="profile-top">
+      <div class="avatar" id="avatar">👤</div>
+      <div>
+        <h2 id="displayName">Your Name</h2>
+        <p id="displayUsername">@yourusername</p>
+        <p id="displayCountry">🌍 Your Country</p>
+      </div>
+    </div>
+
+    <p id="displayBio">Sharing my skills with the world!</p>
+
+    <div class="stats">
+      <div><strong id="postCount">2</strong>Posts</div>
+      <div><strong>0</strong>Followers</div>
+      <div><strong>0</strong>Following</div>
+    </div>
+
+    <button class="edit-btn" onclick="openEditor()">
+      ✏️ Edit Profile
+    </button>
+
+    <h3>🌟 My Talents</h3>
+    <div class="talents" id="talentTags">
+      <span class="tag">🎵 Music</span>
+      <span class="tag">🎨 Art</span>
+      <span class="tag">💻 Coding</span>
+    </div>
+
+    <h3>🖼️ My Showcase</h3>
+    <div class="posts" id="posts">
+      <div class="post">🎨<p>My Creative Work</p></div>
+      <div class="post">💻<p>My Projects</p></div>
+    </div>
+
+    <p id="notice" aria-live="polite"></p>
+  </section>
+</main>
+
+<nav>
+  <a href="home.html">🏠 Home</a>
+  <a href="showcase.html">🎬 Showcase</a>
+  <a href="index.html" onclick="logout()">🚪 Logout</a>
+</nav>
+
+<dialog id="editor">
+  <h2>Edit Your Profile</h2>
+
+  <form id="profileForm">
+    <label for="photo">Profile photo</label>
+    <input type="file" id="photo" accept="image/*">
+
+    <label for="name">Full name</label>
+    <input id="name" maxlength="60" required>
+
+    <label for="username">Username</label>
+    <input id="username" maxlength="30" required>
+
+    <label for="country">Country</label>
+    <input id="country" maxlength="60" placeholder="Your country">
+
+    <label for="bio">Bio</label>
+    <textarea id="bio" maxlength="250" rows="3"></textarea>
+
+    <label for="skills">Your talents (comma-separated)</label>
+    <input id="skills" placeholder="Music, Art, Coding">
+
+    <div class="form-actions">
+      <button type="submit">Save Changes</button>
+      <button type="button" class="cancel"
+        onclick="document.getElementById('editor').close()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const editor = document.getElementById("editor");
+const form = document.getElementById("profileForm");
+let photoData = "";
+
+function openEditor() {
+  document.getElementById("name").value =
+    document.getElementById("displayName").textContent;
+
+  document.getElementById("username").value =
+    document.getElementById("displayUsername").textContent.replace(/^@/, "");
+
+  document.getElementById("country").value =
+    document.getElementById("displayCountry").textContent.replace("🌍 ", "");
+
+  document.getElementById("bio").value =
+    document.getElementById("displayBio").textContent;
+
+  document.getElementById("skills").value =
+    [...document.querySelectorAll("#talentTags .tag")]
+      .map(tag => tag.textContent.replace(/^[^ ]+ /, ""))
+      .join(", ");
+
+  editor.showModal();
+}
+
+document.getElementById("photo").addEventListener("change", event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("Please choose an image smaller than 2 MB.");
+    event.target.value = "";
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => { photoData = reader.result; };
+  reader.readAsDataURL(file);
+});
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const username = document.getElementById("username").value.trim();
+  const country = document.getElementById("country").value.trim();
+  const bio = document.getElementById("bio").value.trim();
+  const skills = document.getElementById("skills").value
+    .split(",").map(s => s.trim()).filter(Boolean).slice(0, 12);
+
+  document.getElementById("displayName").textContent = name;
+  document.getElementById("displayUsername").textContent = "@" + username;
+  document.getElementById("displayCountry").textContent =
+    "🌍 " + (country || "Country not set");
+  document.getElementById("displayBio").textContent = bio;
+
+  const tags = document.getElementById("talentTags");
+  tags.replaceChildren();
+
+  skills.forEach(skill => {
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = skill;
+    tags.appendChild(tag);
+  });
+
+  if (photoData) {
+    const img = document.createElement("img");
+    img.src = photoData;
+    img.alt = "Profile photo";
+    document.getElementById("avatar").replaceChildren(img);
+  }
+
+  document.getElementById("notice").textContent =
+    "Profile updated for this session!";
+
+  editor.close();
+});
+
+function logout() {
+  alert("Demo logout. Connect real authentication for secure logout.");
+}
+</script>
+
+</body>
+</html>
